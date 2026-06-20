@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Volt Legacy",
+  "version": "1.0.0",
+  "description": "Engineered Precision — Legacy Build (Low Resource)",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage",
+    "system.memory"
+  ],
+  "host_permissions": [
+    "https://*.open-meteo.com/*",
+    "https://api.coingecko.com/*",
+    "https://dummyjson.com/*"
+  ]
+}

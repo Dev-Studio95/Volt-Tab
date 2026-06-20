@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>VOLT | Legacy Build</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="overflow-hidden font-body">
+
+  <!-- TopNavBar -->
+  <nav class="nav-bar">
+    <div class="nav-left">
+      <span class="logo-text">VOLT</span>
+      <div id="shortcuts-container" class="shortcuts-wrapper">
+        <!-- Shortcuts injected dynamically -->
+      </div>
+    </div>
+    <div class="nav-right">
+      <button id="add-shortcut-btn" class="pill-button btn-add">
+        <span class="material-symbols-outlined">add</span> ADD
+      </button>
+      <div class="nav-icons">
+        <span id="sidebar-toggle" class="material-symbols-outlined icon-btn" title="Settings">settings</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Canvas Workspace -->
+  <main id="workspace" class="main-workspace static-bg">
+
+    <div id="widget-volt" class="draggable-widget widget-box" data-id="volt">
+      <h1 class="hero-text">Volt.</h1>
+    </div>
+
+    <div id="widget-clock" class="draggable-widget widget-box" data-id="clock">
+      <div id="digital-clock" class="clock-display">00:00</div>
+      <div id="am-pm-indicator" class="clock-ampm hidden"></div>
+    </div>
+
+    <div id="widget-search" class="draggable-widget widget-box" data-id="search">
+      <div class="search-box-group">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input id="search-input" class="search-input-field" placeholder="Search the web..." type="text">
+      </div>
+    </div>
+
+    <div id="widget-stats" class="draggable-widget widget-box stats-card hidden" data-id="stats">
+      <div class="stats-header">
+        <span class="stats-title">System Stats</span>
+        <span class="material-symbols-outlined icon-stats">monitoring</span>
+      </div>
+      <div class="stat-row">
+        <div class="stat-labels"><span class="label-low">RAM</span><span id="ram-text" class="label-high">-- / -- GB</span></div>
+        <div class="progress-bar-bg"><div id="ram-bar" class="progress-bar-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div id="widget-pomodoro" class="draggable-widget widget-box hidden" data-id="pomodoro">
+      <div class="stats-header">
+        <span class="stats-title">Focus Timer</span>
+        <span class="material-symbols-outlined icon-stats">timer</span>
+      </div>
+      <div id="pomodoro-display" class="pomodoro-time">25:00</div>
+      <div class="pomodoro-controls">
+        <button id="pomo-start" class="pill-button btn-sec">Start</button>
+        <button id="pomo-reset" class="pill-button btn-sec">Reset</button>
+      </div>
+    </div>
+
+    <div id="widget-notes" class="draggable-widget widget-box notes-card hidden" data-id="notes">
+      <div class="stats-header">
+        <span class="stats-title">Scratchpad</span>
+        <span class="material-symbols-outlined icon-stats">edit_note</span>
+      </div>
+      <textarea id="notes-textarea" class="notes-input" placeholder="Type your thoughts here..."></textarea>
+    </div>
+
+    <div id="widget-weather" class="draggable-widget widget-box mini-card hidden" data-id="weather">
+      <div class="stats-header">
+        <span class="stats-title">Weather</span>
+        <span class="material-symbols-outlined icon-stats">partly_cloudy_day</span>
+      </div>
+      <div id="weather-temp" class="hero-metric">--°C</div>
+    </div>
+
+    <div id="widget-crypto" class="draggable-widget widget-box mini-card hidden" data-id="crypto">
+      <div class="stats-header">
+        <span class="stats-title">BTC / USD</span>
+        <span class="material-symbols-outlined icon-stats">currency_bitcoin</span>
+      </div>
+      <div id="crypto-price" class="hero-metric">$--</div>
+    </div>
+
+    <div id="widget-quote" class="draggable-widget widget-box quote-card hidden" data-id="quote">
+      <span class="material-symbols-outlined format-quote">format_quote</span>
+      <div id="quote-text" class="quote-text">Loading wisdom...</div>
+      <div id="quote-author" class="quote-author">- System</div>
+    </div>
+
+  </main>
+
+  <!-- Settings Sidebar -->
+  <aside id="config-sidebar" class="sidebar hidden-sidebar">
+    <div class="sidebar-header">
+      <div>
+        <h2>Configuration</h2>
+        <p class="sidebar-subtitle">Customize layout and widgets.</p>
+      </div>
+      <span id="close-sidebar-btn" class="material-symbols-outlined icon-btn close-btn">close</span>
+    </div>
+
+    <div class="settings-scroll-area">
+      <!-- Widgets -->
+      <div class="settings-group">
+        <h3 class="group-title">Workspace Widgets</h3>
+        <div class="sidebar-menu">
+          <label class="toggle-control"><input type="checkbox" class="widget-toggle" data-target="volt" checked><span class="custom-checkbox"></span> Volt Branding</label>
+          <label class="toggle-control"><input type="checkbox" class="widget-toggle" data-target="clock" checked><span class="custom-checkbox"></span> Time Matrix</label>
+          <label class="toggle-control"><input type="checkbox" class="widget-toggle" data-target="search" checked><span class="custom-checkbox"></span> Global Search</label>
+          <label class="toggle-control"><input type="checkbox" class="widget-toggle" data-target="weather"><span class="custom-checkbox"></span> Live Weather</label>
+          <label class="toggle-control"><input type="checkbox" class="widget-toggle" data-target="crypto"><span class="custom-checkbox"></span> Bitcoin Tracker</label>
+          <label class="toggle-control"><input type="checkbox" class="widget-toggle" data-target="quote"><span class="custom-checkbox"></span> Daily Quote</label>
+          <label class="toggle-control"><input type="checkbox" class="widget-toggle" data-target="stats"><span class="custom-checkbox"></span> System RAM</label>
+          <label class="toggle-control"><input type="checkbox" class="widget-toggle" data-target="pomodoro"><span class="custom-checkbox"></span> Focus Timer</label>
+          <label class="toggle-control"><input type="checkbox" class="widget-toggle" data-target="notes"><span class="custom-checkbox"></span> Scratchpad</label>
+        </div>
+      </div>
+
+      <!-- Layout Controls -->
+      <div class="settings-group">
+        <h3 class="group-title">Layout</h3>
+        <div class="sidebar-menu">
+          <label class="toggle-control">
+            <input type="checkbox" id="setting-lock-workspace">
+            <span class="custom-checkbox"></span> Lock Workspace
+          </label>
+        </div>
+      </div>
+
+      <!-- Personalization -->
+      <div class="settings-group">
+        <h3 class="group-title">Personalization</h3>
+        <div class="sidebar-menu">
+          <label class="toggle-control"><input type="checkbox" id="setting-12hr-clock"><span class="custom-checkbox"></span> 12-Hour Clock</label>
+          <label class="toggle-control"><input type="checkbox" id="setting-show-footer" checked><span class="custom-checkbox"></span> Show Footer</label>
+        </div>
+      </div>
+    </div>
+
+    <button id="reset-layout-btn" class="pill-button reset-btn">Reset to Default Layout</button>
+  </aside>
+
+  <!-- Add/Edit Shortcut Modal -->
+  <div id="shortcut-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <h3 id="shortcut-modal-title">Add Shortcut</h3>
+      <div class="input-container">
+        <input type="text" id="shortcut-name" class="modern-input" placeholder="Name (e.g., GitHub)" autocomplete="off">
+        <input type="text" id="shortcut-url" class="modern-input" placeholder="URL (e.g., https://github.com)" autocomplete="off">
+      </div>
+      <div class="modal-footer-actions">
+        <button id="modal-delete" class="pill-button btn-sec hidden" style="color:#ff5555;margin-right:auto;">Delete</button>
+        <button id="modal-cancel" class="pill-button btn-sec">Cancel</button>
+        <button id="modal-save" class="pill-button btn-pri">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="app-footer" class="canvas-footer">
+    <div><span class="footer-tag">VOLT // LEGACY v1.0</span></div>
+    <div>
+      <a href="https://github.com/Dev-Studio95" target="_blank" class="footer-dev-link">
+        <svg height="14" width="14" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+        </svg>
+        @Dev-Studio95
+      </a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
