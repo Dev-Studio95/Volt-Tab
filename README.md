@@ -8,7 +8,7 @@ Volt Legacy is the stripped-back edition of the Volt new tab extension. Same dar
 
 ## Screenshots
 
-!(assets/Capture.JPG)
+<img width="1365" height="649" alt="Capture" src="https://github.com/user-attachments/assets/347852c6-f9fc-423f-95b3-ce27105cfc56" />
 
 ---
 
