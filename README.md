@@ -8,7 +8,7 @@ Volt Legacy is the stripped-back edition of the Volt new tab extension. Same dar
 
 ## Screenshots
 
-> `assets/Capture.jpg`
+> (assets/Capture.jpg)
 
 ---
 
